@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('../jsii-playground/dist/java/com/acme/hello/jsii-playground/0.0.0/jsii-playground-0.0.0.jar')
+
+    implementation group: 'org.cdk8s', name: 'cdk8s-plus', version: '0.30.0'
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
